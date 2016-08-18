@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,32 +58,39 @@
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Signal2 = new System.Windows.Forms.Button();
             this.Square = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Vpp = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Freq = new System.Windows.Forms.TextBox();
+            this.DcOffset = new System.Windows.Forms.TextBox();
+            this.Signal1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Duty = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(0, 27);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series2";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series11.ChartArea = "ChartArea1";
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series2";
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
             this.chart1.Size = new System.Drawing.Size(659, 365);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -302,23 +309,15 @@
             this.comboBox3.TabIndex = 23;
             this.comboBox3.Text = "High Z";
             // 
-            // button5
+            // Signal2
             // 
-            this.button5.Location = new System.Drawing.Point(674, 250);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(78, 48);
-            this.button5.TabIndex = 24;
-            this.button5.Text = "Signal 1";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(673, 304);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(78, 48);
-            this.button6.TabIndex = 25;
-            this.button6.Text = "Signal 2";
-            this.button6.UseVisualStyleBackColor = true;
+            this.Signal2.Location = new System.Drawing.Point(673, 304);
+            this.Signal2.Name = "Signal2";
+            this.Signal2.Size = new System.Drawing.Size(78, 48);
+            this.Signal2.TabIndex = 25;
+            this.Signal2.Text = "Signal 2";
+            this.Signal2.UseVisualStyleBackColor = true;
+            this.Signal2.Click += new System.EventHandler(this.Signal2_Click);
             // 
             // Square
             // 
@@ -328,6 +327,7 @@
             this.Square.TabIndex = 26;
             this.Square.Text = "Square";
             this.Square.UseVisualStyleBackColor = true;
+            this.Square.Click += new System.EventHandler(this.Square_Click_1);
             // 
             // button10
             // 
@@ -361,17 +361,101 @@
             this.comboBox1.TabIndex = 29;
             this.comboBox1.Text = "Hz";
             // 
+            // Vpp
+            // 
+            this.Vpp.AccessibleName = "";
+            this.Vpp.Location = new System.Drawing.Point(968, 78);
+            this.Vpp.Name = "Vpp";
+            this.Vpp.Size = new System.Drawing.Size(100, 20);
+            this.Vpp.TabIndex = 30;
+            this.Vpp.Text = "3";
+            this.Vpp.TextChanged += new System.EventHandler(this.Vpp_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(965, 62);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Vpp";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // Freq
+            // 
+            this.Freq.Location = new System.Drawing.Point(968, 127);
+            this.Freq.Name = "Freq";
+            this.Freq.Size = new System.Drawing.Size(100, 20);
+            this.Freq.TabIndex = 32;
+            this.Freq.Text = "1";
+            this.Freq.TextChanged += new System.EventHandler(this.Freq_TextChanged);
+            // 
+            // DcOffset
+            // 
+            this.DcOffset.Location = new System.Drawing.Point(995, 183);
+            this.DcOffset.Name = "DcOffset";
+            this.DcOffset.Size = new System.Drawing.Size(100, 20);
+            this.DcOffset.TabIndex = 33;
+            this.DcOffset.Text = "0";
+            this.DcOffset.TextChanged += new System.EventHandler(this.DcOffset_TextChanged);
+            // 
+            // Signal1
+            // 
+            this.Signal1.AllowDrop = true;
+            this.Signal1.Location = new System.Drawing.Point(25, 393);
+            this.Signal1.Name = "Signal1";
+            this.Signal1.Size = new System.Drawing.Size(123, 32);
+            this.Signal1.TabIndex = 34;
+            this.Signal1.Text = "Display Signal 1";
+            this.Signal1.UseVisualStyleBackColor = true;
+            this.Signal1.Click += new System.EventHandler(this.Signal1_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(992, 170);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "Dc Offset";
+            // 
+            // Duty
+            // 
+            this.Duty.Location = new System.Drawing.Point(983, 229);
+            this.Duty.Name = "Duty";
+            this.Duty.Size = new System.Drawing.Size(100, 20);
+            this.Duty.TabIndex = 36;
+            this.Duty.Text = "50";
+            this.Duty.TextChanged += new System.EventHandler(this.Duty_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(980, 213);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Duty Cycle";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 537);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Duty);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.Signal1);
+            this.Controls.Add(this.DcOffset);
+            this.Controls.Add(this.Freq);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.Vpp);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.Square);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.Signal2);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.button9);
@@ -431,12 +515,19 @@
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Signal2;
         private System.Windows.Forms.Button Square;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox Vpp;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox Freq;
+        private System.Windows.Forms.TextBox DcOffset;
+        private System.Windows.Forms.Button Signal1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox Duty;
+        private System.Windows.Forms.Label label8;
     }
 }
 

@@ -12,6 +12,10 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+
+        bool sig1case = false;
+        bool sig2case = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -155,7 +159,89 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void Square_Click(object sender, EventArgs e)
+        private void Square_Click_1(object sender, EventArgs e)
+        {
+            double vpp;
+            double freq;
+            double dcoff;
+            double x;
+            double samples;
+            double period;
+            double Amplitude;
+            double offset = 0;
+            double duty;
+
+            if (Double.TryParse(Vpp.Text, out vpp) && Double.TryParse(Freq.Text, out freq) && Double.TryParse(DcOffset.Text, out dcoff) && Double.TryParse(Duty.Text, out duty))
+            {
+                x = 0;
+                samples = 1000;
+                period = 1 / freq;
+                Amplitude = vpp / 2;
+                duty = duty / 100;
+
+
+                if (sig1case)
+                {
+                    chart1.Series[0].Points.Clear();
+                    chart1.Series[1].Points.Clear();
+                    while (x < 2 * period)
+                    {
+                        if (x < period)
+                            if (x < (period) * duty)
+                                chart1.Series[0].Points.AddXY(x, Amplitude + dcoff);
+                            else
+                                chart1.Series[0].Points.AddXY(x, -Amplitude + dcoff);
+                        else
+                            if (x < (2 * period) - (period - period * duty))
+                            chart1.Series[0].Points.AddXY(x, Amplitude + dcoff);
+                        else
+                            chart1.Series[0].Points.AddXY(x, -Amplitude + dcoff);
+
+                        x += period / (2 * (double)samples);
+                    }
+                }
+                chart1.ChartAreas[0].AxisX.Maximum = Double.NaN;
+                chart1.ChartAreas[0].AxisX.Minimum = Double.NaN;
+
+            }
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Vpp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Freq_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DcOffset_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Signal1_Click(object sender, EventArgs e)
+        {
+            sig1case = !sig1case;
+            if (sig1case)
+                Signal1.BackColor = Color.Green;
+            else
+                Signal1.BackColor = Color.Red;
+        }
+
+        private void Signal2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Duty_TextChanged(object sender, EventArgs e)
         {
 
         }
