@@ -156,7 +156,47 @@ namespace WindowsFormsApplication1
 
         private void button10_Click(object sender, EventArgs e)
         {
+            double vpp;
+            double freq;
+            double dcoff;
+            double x;
+            double samples;
+            double period;
+            double Amplitude;
+            double offset = 0;
+            double duty;
+            double slope;
 
+            if (Double.TryParse(Vpp.Text, out vpp) && Double.TryParse(Freq.Text, out freq) && Double.TryParse(DcOffset.Text, out dcoff) && Double.TryParse(Duty.Text, out duty))
+            {
+                x = 0;
+                samples = 1000;
+                period = 1 / freq;
+                Amplitude = vpp / 2;
+                duty = duty / 100;
+                slope = vpp / (period / 2);
+
+                chart1.Series[0].Points.Clear();
+                chart1.Series[1].Points.Clear();
+                while (x < 2 * period)
+                {
+                    if (x < period)
+                        if (x < (period) * .5)
+                            chart1.Series[0].Points.AddXY(x, x * slope + dcoff - vpp / 2);
+                        else
+                            chart1.Series[0].Points.AddXY(x, (x - period * .5) * slope + dcoff - vpp / 2);
+                    else
+                        if (x < (2 * period) - (period - period * .5))
+                        chart1.Series[0].Points.AddXY(x, (x - period) * slope + dcoff - vpp / 2);
+                    else
+                        chart1.Series[0].Points.AddXY(x, (x - period - period * .5) * slope + dcoff - vpp / 2);
+
+                    x += period / (2 * (double)samples);
+                }
+
+                chart1.ChartAreas[0].AxisX.Maximum = Double.NaN;
+                chart1.ChartAreas[0].AxisX.Minimum = Double.NaN;
+            }
         }
 
         private void Square_Click_1(object sender, EventArgs e)
@@ -244,6 +284,52 @@ namespace WindowsFormsApplication1
         private void Duty_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Triangle_Click(object sender, EventArgs e)
+        {
+            double vpp;
+            double freq;
+            double dcoff;
+            double x;
+            double samples;
+            double period;
+            double Amplitude;
+            double offset = 0;
+            double duty;
+            double slope;
+
+            if (Double.TryParse(Vpp.Text, out vpp) && Double.TryParse(Freq.Text, out freq) && Double.TryParse(DcOffset.Text, out dcoff) && Double.TryParse(Duty.Text, out duty))
+            {
+                x = 0;
+                samples = 1000;
+                period = 1 / freq;
+                Amplitude = vpp / 2;
+                duty = duty / 100;
+                slope = vpp / (period / 2);
+
+                chart1.Series[0].Points.Clear();
+                chart1.Series[1].Points.Clear();
+                while (x < 2 * period)
+                {
+                    if (x < period)
+                        if (x < (period) * .5)
+                            chart1.Series[0].Points.AddXY(x, x * slope + dcoff - vpp/2);
+                        else
+                            chart1.Series[0].Points.AddXY(x, -(x - period*.5) * slope + dcoff + vpp/2);
+                    else
+                        if (x < (2 * period) - (period - period * .5))
+                            chart1.Series[0].Points.AddXY(x, (x - period ) * slope + dcoff - vpp / 2);
+                        else
+                            chart1.Series[0].Points.AddXY(x, -(x - period - period * .5) * slope + dcoff + vpp / 2);
+
+                    x += period / (2 * (double)samples);
+                }
+                
+                chart1.ChartAreas[0].AxisX.Maximum = Double.NaN;
+                chart1.ChartAreas[0].AxisX.Minimum = Double.NaN;
+
+            }
         }
     }
 }

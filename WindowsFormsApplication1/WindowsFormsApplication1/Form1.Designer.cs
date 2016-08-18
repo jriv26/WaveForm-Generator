@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +60,7 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.Signal2 = new System.Windows.Forms.Button();
             this.Square = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.Sawtooth = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Vpp = new System.Windows.Forms.TextBox();
@@ -71,26 +71,27 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Duty = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.Triangle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 27);
             this.chart1.Name = "chart1";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series2";
-            this.chart1.Series.Add(series11);
-            this.chart1.Series.Add(series12);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(659, 365);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -329,15 +330,15 @@
             this.Square.UseVisualStyleBackColor = true;
             this.Square.Click += new System.EventHandler(this.Square_Click_1);
             // 
-            // button10
+            // Sawtooth
             // 
-            this.button10.Location = new System.Drawing.Point(233, 480);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "Sawtooth";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.Sawtooth.Location = new System.Drawing.Point(233, 480);
+            this.Sawtooth.Name = "Sawtooth";
+            this.Sawtooth.Size = new System.Drawing.Size(75, 23);
+            this.Sawtooth.TabIndex = 27;
+            this.Sawtooth.Text = "Sawtooth";
+            this.Sawtooth.UseVisualStyleBackColor = true;
+            this.Sawtooth.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -438,11 +439,22 @@
             this.label8.TabIndex = 37;
             this.label8.Text = "Duty Cycle";
             // 
+            // Triangle
+            // 
+            this.Triangle.Location = new System.Drawing.Point(441, 480);
+            this.Triangle.Name = "Triangle";
+            this.Triangle.Size = new System.Drawing.Size(75, 23);
+            this.Triangle.TabIndex = 38;
+            this.Triangle.Text = "Triangle";
+            this.Triangle.UseVisualStyleBackColor = true;
+            this.Triangle.Click += new System.EventHandler(this.Triangle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 537);
+            this.Controls.Add(this.Triangle);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.Duty);
             this.Controls.Add(this.label7);
@@ -453,7 +465,7 @@
             this.Controls.Add(this.Vpp);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.Sawtooth);
             this.Controls.Add(this.Square);
             this.Controls.Add(this.Signal2);
             this.Controls.Add(this.comboBox3);
@@ -517,7 +529,7 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button Signal2;
         private System.Windows.Forms.Button Square;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button Sawtooth;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox Vpp;
@@ -528,6 +540,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox Duty;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Triangle;
     }
 }
 
